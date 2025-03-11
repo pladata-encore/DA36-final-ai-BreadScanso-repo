@@ -5,7 +5,20 @@ import uvicorn
 from pyngrok import ngrok
 import os
 from dotenv import load_dotenv
+import json
+from fastapi.middleware.cors import CORSMiddleware
 
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 개발 중에는 모든 origin 허용
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# 나머지 라우터 코드...
 # .env 파일 로드
 load_dotenv()
 
@@ -79,11 +92,45 @@ async def predict(data: ImageData):
         image_np = np.array(image)
         image_np = cv2.cvtColor(image_np, cv2.COLOR_RGB2BGR)
 
-        # YOLO 모델 추론
-        results = model34(image_np)
+        class_names = model34.names  # 클래스 이름 저장
+        result_data = []
 
-        # 결과 반환
-        return {"prediction": results[0].tojson()}
+        # YOLO 모델 추론
+        result = model34(image_np)
+        # print(result[0])
+        # print(type(result))
+
+        if result[0].boxes is None or len(result[0].boxes) == 0:
+            return {"message": "객체가 1개도 탐지되지 않았습니다.", "data": []}
+
+        # bbox 포함한 이미지 데이터 생성
+        boxes = result[0].boxes.xyxy  # 바운딩 박스
+        confidences = result[0].boxes.conf  # 신뢰도
+        class_ids = result[0].boxes.cls  # 클래스
+        for box, confidence, class_id in zip(boxes, confidences, class_ids):
+            x1, y1, x2, y2 = map(int, box)  # 좌표를 정수로 변환
+            name = class_names[int(class_id)]  # 클래스 이름
+            # img (ndarray)에 바운딩박스, 클래스명, 신뢰도를 추가
+            cv2.rectangle(image_np, (x1, y1), (x2, y2), (255, 0, 0), 2)  # color는 BGR 순서
+            # 이미지에 텍스트를 추가. 기준위치는 좌측상단!
+            cv2.putText(image_np, f'{name} {confidence:.2f}', (x1, y1), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 0, 0), 2)
+            result_data.append({
+                'name': name,
+                'confidence': f'{confidence:.2f}',
+            })
+        result_image = Image.fromarray(image_np)  # 결과 이미지를 PIL로 변환
+
+        # 결과 이미지를 Base64로 변환 (FastAPI에서 JSON 응답을 위해 필요)
+        result_image = Image.fromarray(cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB))
+        buffered = BytesIO()
+        result_image.save(buffered, format="JPEG")
+        base64_image = base64.b64encode(buffered.getvalue()).decode("utf-8")
+        print(f"예측 클래스, confidence : {result_data}")
+
+        return {
+            "image": base64_image,
+            "data": result_data
+        }
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"추론 오류: {str(e)}")

@@ -1,0 +1,8 @@
+torch==2.0.0 -f https://download.pytorch.org/whl/cpu/torch_stable.html
+torchvision==0.15.1 -f https://download.pytorch.org/whl/cpu/torch_stable.html
+torchaudio==2.0.0 -f https://download.pytorch.org/whl/cpu/torch_stable.html
+opencv-python-headless
+fastapi
+uvicorn
+pillow
+python-multipart
