@@ -1,1 +1,1 @@
-# DA36-final-ai-breadscanso-repo
+## DA36기 최종프로젝트 AI(이미지 인식) repo
