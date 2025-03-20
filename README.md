@@ -13,19 +13,19 @@
    AI 모델을 통해 제품을 **자동으로 인식**하고, 제품명과 가격, 수량이 포함된 주문 목록을 생성하는 서비스 제공
   
 - **주요 기능**  
-   **1. 고객이 키오스크에서 빵을 촬영**
+  1. 고객이 키오스크에서 빵을 촬영
   
-   **2. 객체 탐지 모델이 촬영된 이미지를 분석하여 빵의 종류를 자동으로 분류**
+  2. 객체 탐지 모델이 촬영된 이미지를 분석하여 빵의 종류를 자동으로 분류  
      ![detect](https://github.com/user-attachments/assets/7438a62b-5e47-4b0c-879c-d2a1dc7c4448)  
-  
-   **3. 자동으로 주문 목록 생성**  
-   ![order](https://github.com/user-attachments/assets/22246667-8b86-4259-bfe6-a01deff973cc)    
 
-      - **신뢰도가 0.6 미만일 경우, 해당 제품명이 빨간색으로 표시**  
-        ![lessred](https://github.com/user-attachments/assets/36ad6959-cbab-458a-8f20-6721ece55445)    
+  3. 자동으로 주문 목록 생성  
+     ![order](https://github.com/user-attachments/assets/22246667-8b86-4259-bfe6-a01deff973cc)    
+
+     - **신뢰도가 0.6 미만일 경우, 해당 제품명이 빨간색으로 표시**  
+        ![lessred](https://github.com/user-attachments/assets/4f334f45-88d0-4659-ba97-c1e3601edfea)    
 
       - **제품이 잘못 분류되었을 경우, 수동으로 제품 추가 가능**  
-        ![add](https://github.com/user-attachments/assets/1227f210-43e4-49e3-b789-682516c16380)  
+        ![add](https://github.com/user-attachments/assets/cd787d73-b175-408d-b390-c78138434ad0)    
 
 ---
 
