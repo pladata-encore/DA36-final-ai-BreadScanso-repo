@@ -102,15 +102,15 @@ Roboflow 프레임워크를 활용하여 데이터 라벨링 및 bounding box, s
 
 ## 🪸 하이퍼파라미터 및 데이터 증강 기법
 
-**하이퍼파라미터**
-- epochs: 50, batch: 16, lr0: 0.001
-- mosaic, mixup: True
-- degrees: 10, scale: 0.5, shear: 10
-- flipud, fliplr: 0.5, patience: 0
+- **하이퍼파라미터**
+   - epochs: 50, batch: 16, lr0: 0.001
+   - mosaic, mixup: True
+   - degrees: 10, scale: 0.5, shear: 10
+   - flipud, fliplr: 0.5, patience: 0
 
-**데이터 증강 기법**
-- Mosaic, Mixup: 이미지 합성 및 섞기
-- 회전, 크기 조정, 왜곡, 뒤집기: 다양한 변형 학습
+- **데이터 증강 기법**
+   - Mosaic, Mixup: 이미지 합성 및 섞기
+   - 회전, 크기 조정, 왜곡, 뒤집기: 다양한 변형 학습
 
 ---
 
