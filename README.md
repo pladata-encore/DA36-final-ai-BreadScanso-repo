@@ -24,7 +24,7 @@
      - **신뢰도가 0.6 미만일 경우, 해당 제품명이 빨간색으로 표시**  
         ![lessred](https://github.com/user-attachments/assets/4f334f45-88d0-4659-ba97-c1e3601edfea)    
 
-      - **제품이 잘못 분류되었을 경우, 수동으로 제품 추가 가능**  
+      - **제품이 잘못 분류되었을 경우, 수동으로 제품 추가 가능**<br>
         ![add](https://github.com/user-attachments/assets/cd787d73-b175-408d-b390-c78138434ad0)    
 
 ---
