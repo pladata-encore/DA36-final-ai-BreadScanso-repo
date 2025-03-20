@@ -32,7 +32,8 @@
 ## 🎞️ 데이터셋
 같은 환경에서 각도와 밝기를 조절하며 촬영된 이미지와 동영상을 프레임 단위로 저장하여 활용  
 
-![croissant](https://github.com/user-attachments/assets/b6de4f43-9d53-4910-bf3b-7e276a396ca5)
+![croissant](https://github.com/user-attachments/assets/b6de4f43-9d53-4910-bf3b-7e276a396ca5)  
+
 
 - **개수**: 1,749장의 이미지파일(.jpg)
 - **입력 이미지 크기**: 640x640 픽셀
